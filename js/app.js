@@ -7,7 +7,7 @@
       cardData: {
           name: '',
           bio: '',
-          avatarUrl: 'src/assets/HideoKojima.png', // Avatar por defecto
+          avatarUrl: 'src/assets/a3.jpg', // Avatar por defecto
           color: '#3b82f6'
       }
   };
@@ -63,20 +63,18 @@
      * selector mostraba imagenes rotas.
      */
     const AVATARES = [
-        'CaraFeliz_xbox360.png',
-        'ChinesePanda.png',
-        'ClubPenguin.png',
-        'Fletcher.png',
-        'Gato.png',
-        'HideoKojima.png',
-        'JackFrost.png',
-        'Kagami.png',
-        'KratosUtorrent.png',
-        'Megumin.png',
-        'NecoArc.png',
-        'panda_xbox360.png',
-        'perro_xbox360.png',
-        'WittyAlien.png'
+        'a1.jpg',
+        'a2.jpg',
+        'a3.jpg',
+        'a4.jpg',
+        'a5.jpg',
+        'a6.jpg',
+        'a7.jpg',
+        'a8.jpg',
+        'a9.jpg',
+        'a10.jpg',
+        'a11.jpg',
+        'a12.jpg',
     ];
     const rutaAvatar = (archivo) => ASSETS_PATH + archivo;
 
