@@ -1,0 +1,326 @@
+/* Variables globales: colores reutilizables en todo el CSS */
+:root {
+    --primary-color: #2563eb;      /* Azul principal */
+    --primary-hover: #1d4ed8;      /* Azul más oscuro para hover */
+    --bg-color: #f8fafc;           /* Color de fondo general */
+    --text-color: #1e293b;         /* Color de texto */
+    --card-bg: #ffffff;            /* Fondo de tarjetas */
+    --border-color: #e2e8f0;       /* Color de bordes */
+}
+
+/* Reset básico: elimina márgenes y paddings por defecto */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.5;
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: white ;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+.brand{
+    font-size: 1.2rem;
+    color: var(--primary-color);
+}
+.nav-link{
+    margin-left: 1rem;
+    text-decoration: none;
+    color: #64748b;
+    font-weight: 500;
+}
+.nav-link-active {
+    color: var(--primary-color);
+}
+.view-create-profile{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.form-container,.card-container{
+    width: 100%;
+}
+.input-group, .input-group-now{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+.input-group-now{
+    flex-direction: row;
+    gap: 0.5rem;
+}
+label{
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    color: #475569;
+}
+input[type="text"], textarea{
+    padding: 0.6rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-family: inherit;
+    width: 100%;
+}
+input[type="color"]{
+    width: 100%;
+    height: 40px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.input-group-row{
+    display: flex;
+    gap: 0.5rem;
+}
+.input-group-row input{flex: 1;}
+hr{
+    border: 0;
+    height: 1px;
+    background-color: var(--border-color);
+     margin: 1.5rem  0;
+}
+button{
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.btn-primary{
+    background-color: var(--primary-color);
+    color: white;
+    width: 100%;
+}
+.btn-primary:hover {background-color: var(--primary-hover);}
+.card{
+    background: var(--card-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+.card-header{
+    height: 120px;
+    background-color: #3b82f6;
+    transition: background-color 0.3s ease;
+}
+.avatar-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+    gap: 10px;
+    margin-top: 0.5rem;
+}
+.avatar-option{
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    border: 3px solid transparent;
+    transition: border-color 0.2s, border-color 0.2s;
+}
+.avatar-option:hover{
+    transform: scale(1.1);
+}
+.avatar-option.selected{
+    border-color: var(--primary-color);
+    box-shadow: 0 0 10px rgba(37, 99, 235, 0.3);
+}
+.avatar{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 4px solid white;
+    margin-top: -50px;
+    background-color: white;
+    object-fit: cover;
+    margin-left: auto;
+    margin-right: auto;
+}
+.card-body{
+    padding: 1.5rem;
+}
+#name-preview{
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+}
+#bio-preview{
+    font-size: 0.95rem;
+    color: #64748b;
+}
+
+@media (min-width: 768px) {
+    .view-create-profile{
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    .form-container{
+        flex: 1;
+        position: sticky;
+        top: 2rem;
+    }
+    .card-container{
+        flex: 1;
+    }
+}
+
+/* --- ESTILOS DE LA GALERÍA --- */
+.gallery-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery-grid{
+    display: grid;
+    /* Responsive automático: crea tantas columnas de mínimo 300px como quepan */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 0 2rem 2rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Reutilizamos el estilo de la tarjeta que ya tenías, asegurando que ocupe el 100% de su celda */
+.gallery-grid .card{
+    width: 100%;
+}
+
+/* --- SISTEMA DE ENRUTAMIENTO SPA --- */
+.view-module{
+    display: none; /* Oculta todas las vistas por defecto */
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+.view-module.active{
+    display: block; /* Solo muestra la vista activa */
+}
+
+@keyframes fadeIn{
+    from{ opacity: 0; transform: translateY(10px); }
+    to{ opacity: 1; transform: translateY(0); }
+}
+
+/* --- Botón secundario y mensajes de estado (usados por galería y API) --- */
+.btn-secondary{
+    background-color: #e2e8f0;
+    color: #1e293b;
+    padding: 0.6rem 1.2rem;
+}
+
+.btn-secondary:hover{
+    background-color: #cbd5e1;
+}
+
+.btn-secondary:disabled,
+.btn-primary:disabled{
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.nav-link.active{
+    color: var(--primary-color);
+}
+
+.status-msg{
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    display: inline-block;
+}
+
+.status-loading{
+    color: #64748b;
+}
+
+.status-success{
+    color: #16a34a;
+}
+
+.status-error{
+    color: #dc2626;
+}
+
+/* --- Inputs extendidos (migrado SP2-2: registro/login) --- */
+input[type="text"], input[type="email"], input[type="password"],
+input[type="date"], input[type="tel"], input[type="number"],
+textarea, select.form-select {
+  padding: 0.6rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-family: inherit;
+  width: 100%;
+  background-color: white;
+}
+
+.input-group-row .input-group { flex: 1; }
+
+/* --- MÓDULO DE AUTENTICACIÓN (migrado SP2-2) --- */
+.auth-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+  border: 1px solid var(--border-color);
+  padding: 2rem;
+}
+
+.auth-tabs {
+  display: flex;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.auth-tab {
+    flex: 1;
+    background: none;
+    border: none;
+    padding: 1rem;
+    font-size: 1.1rem;
+    color: #64748b;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    border-radius: 0;
+    transition: color 0.3s, border-color 0.3s;
+}
+
+.auth-tab:hover {
+  color: var(--primary-hover);
+}
+
+.auth-tab.active {
+  color: var(--primary-color);
+  border-bottom-color: var(--primary-color);
+}
+
+.auth-form {
+  display: none;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.auth-form.active{
+  display: block;
+}
