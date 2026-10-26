@@ -266,61 +266,146 @@ button{
 input[type="text"], input[type="email"], input[type="password"],
 input[type="date"], input[type="tel"], input[type="number"],
 textarea, select.form-select {
-  padding: 0.6rem;
-  border: 1px solid var(--border-color);
-  border-radius: 6px;
+  padding: 0.72rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
   font-family: inherit;
+  font-size: 0.93rem;
   width: 100%;
-  background-color: white;
+  background-color: #f9fafb;
+  color: #111827;
+  transition: border-color 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
 }
 
-.input-group-row .input-group { flex: 1; }
+input:focus, textarea:focus, select.form-select:focus {
+  outline: none;
+  background-color: #ffffff;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
 
-/* --- MÓDULO DE AUTENTICACIÓN (migrado SP2-2) --- */
+input::placeholder, textarea::placeholder {
+  color: #94a3b8;
+  opacity: 1;
+}
+
+.input-group-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.input-group-row .input-group { 
+  flex: 1; 
+  margin-bottom: 1.15rem;
+}
+
+.input-group {
+  margin-bottom: 1.15rem;
+}
+
+/* --- MÓDULO DE AUTENTICACIÓN (Diseño exacto según referencia) --- */
+#view-auth.active {
+  display: flex !important;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: calc(100vh - 100px);
+  padding: 2rem 1rem;
+}
+
 .auth-container {
-  max-width: 600px;
-  margin: 2rem auto;
-  background: var(--card-bg);
-  border-radius: 12px;
-  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
-  border: 1px solid var(--border-color);
-  padding: 2rem;
+  width: 100%;
+  max-width: 480px;
+  margin: 1.5rem auto 3rem auto;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+  border: 1px solid #e5e7eb;
+  border-top: 3.5px solid #6366f1;
+  padding: 2.25rem 2.5rem 2.5rem 2.5rem;
+  box-sizing: border-box;
 }
 
 .auth-tabs {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  background: #eceff3;
+  padding: 5px;
+  border-radius: 14px;
   margin-bottom: 2rem;
-  border-bottom: 2px solid var(--border-color);
+  border: none;
 }
 
 .auth-tab {
-    flex: 1;
-    background: none;
-    border: none;
-    padding: 1rem;
-    font-size: 1.1rem;
-    color: #64748b;
-    cursor: pointer;
-    border-bottom: 3px solid transparent;
-    margin-bottom: -2px;
-    border-radius: 0;
-    transition: color 0.3s, border-color 0.3s;
+  background: transparent;
+  border: none;
+  padding: 0.7rem 1rem;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: #64748b;
+  cursor: pointer;
+  border-radius: 10px;
+  margin-bottom: 0;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: center;
 }
 
 .auth-tab:hover {
-  color: var(--primary-hover);
+  color: #1e293b;
 }
 
 .auth-tab.active {
-  color: var(--primary-color);
-  border-bottom-color: var(--primary-color);
+  background: #ffffff;
+  color: #0f172a;
+  font-weight: 600;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
 }
 
 .auth-form {
   display: none;
-  animation: fadeIn 0.4s ease-in-out;
+  animation: fadeIn 0.3s ease-in-out;
 }
 
-.auth-form.active{
+.auth-form.active {
   display: block;
+}
+
+.auth-form h2 {
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #111827;
+  text-align: center;
+  margin-top: 0.25rem;
+  margin-bottom: 1.75rem;
+}
+
+.auth-form label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.45rem;
+  display: block;
+}
+
+.auth-form .btn-primary {
+  width: 100%;
+  background-color: #1d4ed8;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.85rem 1.5rem;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(29, 78, 216, 0.25);
+  transition: background-color 0.15s ease, transform 0.05s ease;
+  margin-top: 1.5rem !important;
+}
+
+.auth-form .btn-primary:hover {
+  background-color: #1e40af;
+}
+
+.auth-form .btn-primary:active {
+  transform: scale(0.99);
 }
